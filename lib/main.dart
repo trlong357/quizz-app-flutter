@@ -4,10 +4,28 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+  @override
+  _MyAppState createState() => _MyAppState();
+}
 
-  void answerQuestion() {
+class _MyAppState extends State<MyApp> {
+  var questionList = [
+    "Long có đẹp trai không?",
+    "Long có mập địt không?",
+    "Ti có móm không?"
+  ];
+  var _questionIndex = 0;
+
+  void _answerQuestion() {
+    setState(() {
+      if (_questionIndex == 2) {
+        _questionIndex = 0;
+      } else {
+        _questionIndex += 1;
+      }
+    });
     print("Answer Chosen");
   }
 
@@ -17,10 +35,10 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text("My First App")),
         body: Column(children: <Widget>[
-          const Text("The Question!"),
+          Text(questionList[_questionIndex]),
           ElevatedButton(
-            onPressed: answerQuestion,
-            child: const Text("Answer 1"),
+            onPressed: _answerQuestion,
+            child: const Text("Change Question"),
           ),
           ElevatedButton(
             onPressed: () => print("Answer 2"),

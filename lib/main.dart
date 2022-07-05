@@ -35,23 +35,30 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: const Text("My First App")),
-        body: Column(children: <Widget>[
-          Question(questionList[_questionIndex]),
-          ElevatedButton(
-            onPressed: _answerQuestion,
-            child: const Text("Change Question"),
+        body: Center(
+          child: Container(
+            margin: const EdgeInsets.all(10),
+            child: Column(
+              children: <Widget>[
+                Question(questionList[_questionIndex]),
+                ElevatedButton(
+                  onPressed: _answerQuestion,
+                  child: const Text("Change Question"),
+                ),
+                ElevatedButton(
+                  onPressed: () => print("Answer 2"),
+                  child: const Text("Answer 2"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    print("Answer 3");
+                  },
+                  child: const Text("Answer 3"),
+                ),
+              ],
+            ),
           ),
-          ElevatedButton(
-            onPressed: () => print("Answer 2"),
-            child: const Text("Answer 2"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              print("Answer 3");
-            },
-            child: const Text("Answer 3"),
-          ),
-        ]),
+        ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'question.dart';
+import 'answer.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,7 +28,6 @@ class _MyAppState extends State<MyApp> {
         _questionIndex += 1;
       }
     });
-    print("Answer Chosen");
   }
 
   @override
@@ -45,16 +45,12 @@ class _MyAppState extends State<MyApp> {
                   onPressed: _answerQuestion,
                   child: const Text("Change Question"),
                 ),
-                ElevatedButton(
-                  onPressed: () => print("Answer 2"),
-                  child: const Text("Answer 2"),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    print("Answer 3");
-                  },
-                  child: const Text("Answer 3"),
-                ),
+                Answer(() {
+                  print("Answer 1");
+                }),
+                Answer(() {
+                  print("Answer 2");
+                }),
               ],
             ),
           ),
